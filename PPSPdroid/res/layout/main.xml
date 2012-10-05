@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:weightSum="1">
+    
+ <Button 
+    android:layout_height="wrap_content" 
+    android:text="Record a video" 
+    android:layout_width="fill_parent" 
+    android:autoText="true" 
+    android:id="@+id/recordButton"
+    android:onClick="startCamera"
+    ></Button>
+  
+ <TextView 
+    android:layout_height="wrap_content" 
+    android:layout_width="fill_parent"
+    android:text="OR" 
+    android:textStyle="bold" 
+    android:textSize="30px"
+    ></TextView>
+    
+  <Button 
+    android:layout_height="wrap_content" 
+    android:id="@+id/selectButton" 
+    android:text="Select a Video" 
+    android:layout_width="fill_parent"
+    android:onClick="selectVideo"
+    ></Button>
+   
+ <ScrollView 
+    android:id="@+id/scroll" 
+    android:layout_width="fill_parent" android:layout_height="wrap_content">
+    
+  <LinearLayout android:id="@+id/container"
+    android:orientation="vertical" 
+    android:layout_width="fill_parent" android:layout_height="wrap_content">
+   
+   
+   <TextView 
+    android:layout_height="wrap_content" 
+    android:layout_width="fill_parent"
+    android:visibility="invisible"
+    android:text="Video Details:" 
+    android:textStyle="bold" 
+    android:textSize="30px"
+    android:id="@+id/videoDetailHeading"
+    ></TextView>
+      
+  <TextView 
+    android:id="@+id/fullPath"
+    android:layout_height="wrap_content" 
+    android:layout_width="fill_parent"
+    ></TextView>
+  
+  <ImageView 
+     android:id="@+id/videothumbnail" 
+     android:layout_height="wrap_content" android:layout_width="wrap_content"
+     ></ImageView>
+    
+  <EditText 
+    android:layout_width="match_parent"  
+    android:layout_height="wrap_content"
+    android:visibility="invisible"
+    android:text="Video Title"
+    android:id="@+id/videoTitle" 
+    ></EditText>
+    
+  <EditText
+    android:layout_width="match_parent" 
+    android:layout_height="wrap_content" 
+    android:visibility="invisible"
+    android:text="Add Tags"
+    android:inputType="textAutoComplete"
+    android:id="@+id/videoTags" 
+    ></EditText>
+  
+  <Button 
+    android:layout_height="wrap_content" 
+    android:id="@+id/speechTagButton" 
+    android:text="Speak the tags" 
+    android:layout_width="fill_parent"
+    android:onClick="speechTag"
+    android:visibility="invisible"
+    ></Button>
+    
+  <EditText 
+    android:layout_width="match_parent" 
+    android:layout_height="wrap_content" 
+    android:inputType="textMultiLine"
+    android:visibility="invisible"
+    android:text="Add Description"
+    android:id="@+id/videoDescription">
+    <requestFocus></requestFocus>
+    </EditText>
+  
+  <Button 
+    android:layout_height="wrap_content" 
+    android:id="@+id/speechDescButton" 
+    android:text="Speak the description" 
+    android:layout_width="fill_parent"
+    android:onClick="speechDescription"
+    android:visibility="invisible"
+    ></Button>
+  
+  <Button 
+    android:layout_height="wrap_content" 
+    android:id="@+id/shareButton" 
+    android:text="Share Video" 
+    android:layout_width="fill_parent"
+    android:onClick="shareVideo"
+    android:visibility="invisible"
+    ></Button>
+    </LinearLayout>
+  </ScrollView> 
+</LinearLayout>
