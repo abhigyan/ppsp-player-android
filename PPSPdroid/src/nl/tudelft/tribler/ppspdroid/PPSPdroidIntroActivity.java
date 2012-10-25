@@ -160,9 +160,9 @@ public class PPSPdroidIntroActivity extends Activity {
 
     /** Clears the text fields and set the default values */
     private void setTextFields() {
-        mVideoTitle.setText("Video Title");
-        mVideoTags.setText("Add Tags");
-        mVideoDescription.setText("Add Description");
+        mVideoTitle.setText("");
+        mVideoTags.setText("");
+        mVideoDescription.setText("");
     }
 
     /** Displays the filepath and video title */

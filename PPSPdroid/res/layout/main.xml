@@ -64,7 +64,8 @@
     android:layout_width="match_parent"  
     android:layout_height="wrap_content"
     android:visibility="invisible"
-    android:text="Video Title"
+    android:cursorVisible="false"
+    android:hint="Video Title"
     android:id="@+id/videoTitle" 
     ></EditText>
     
@@ -72,7 +73,8 @@
     android:layout_width="match_parent" 
     android:layout_height="wrap_content" 
     android:visibility="invisible"
-    android:text="Add Tags"
+    android:cursorVisible="false"
+    android:hint="Add Tags"
     android:inputType="textAutoComplete"
     android:id="@+id/videoTags" 
     ></EditText>
@@ -82,7 +84,8 @@
     android:layout_height="wrap_content" 
     android:inputType="textMultiLine"
     android:visibility="invisible"
-    android:text="Add Description"
+    android:cursorVisible="false"
+    android:hint="Add Description"
     android:id="@+id/videoDescription">
     <requestFocus></requestFocus>
     </EditText>
