@@ -2,7 +2,6 @@ package nl.tudelft.tribler.ppspdroid;
 
 
 import android.app.Activity;
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -11,7 +10,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.MediaStore.Video.Thumbnails;
-import android.speech.RecognizerIntent;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,8 +17,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.ArrayList;
 
 
 public class PPSPdroidIntroActivity extends Activity {
@@ -31,7 +27,7 @@ public class PPSPdroidIntroActivity extends Activity {
     private static final int SPEECH_DESCRIPTION_REQUEST_CODE = 300;
     private static final int SPEECH_TAG_REQUEST_CODE = 400;
 
-    private Button mShareBtn, mSpeechTagBtn, mSpeechDescBtn;
+    private Button mShareBtn;
 
     private TextView mVideoPath, mVideoDetailHeading;
 
@@ -55,8 +51,6 @@ public class PPSPdroidIntroActivity extends Activity {
         this.mVideoTags = (EditText) findViewById(R.id.videoTags);
         this.mVideoDescription = (EditText) findViewById(R.id.videoDescription);
         this.mShareBtn = (Button) findViewById(R.id.shareButton);
-        this.mSpeechTagBtn = (Button) findViewById(R.id.speechTagButton);
-        this.mSpeechDescBtn = (Button) findViewById(R.id.speechDescButton);
         this.mVideothumbnail = (ImageView) findViewById(R.id.videothumbnail);
     }
 
@@ -86,21 +80,6 @@ public class PPSPdroidIntroActivity extends Activity {
         // selectVideoDescription
         // Show applications that could handle video
         startActivity(Intent.createChooser(intent, "Share the video using"));
-    }
-
-    /**
-     * Start Speech Recognition when user clicks the 'Speak the description'
-     * button
-     */
-    public void speechDescription(View view) {
-        startSpeechRecognition(SPEECH_DESCRIPTION_REQUEST_CODE);
-    }
-
-    /**
-     * Start Speech Recognition when user clicks the 'Speak the tags' button
-     */
-    public void speechTag(View view) {
-        startSpeechRecognition(SPEECH_TAG_REQUEST_CODE);
     }
 
     /** Start phone's camera when user clicks the button 'Record a video' */
@@ -169,42 +148,6 @@ public class PPSPdroidIntroActivity extends Activity {
                      .show();
             }
             break;
-
-        case SPEECH_TAG_REQUEST_CODE:
-            if (resultCode == RESULT_OK) {
-                ArrayList<String> tags = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-                setTextFields(SPEECH_TAG_REQUEST_CODE, tags.get(0));
-            } else if (resultCode == RESULT_CANCELED) {
-                // User cancelled the speech activity
-            } else {
-                // Some other error, advise user
-            }
-            break;
-
-        case SPEECH_DESCRIPTION_REQUEST_CODE:
-            if (resultCode == RESULT_OK) {
-                ArrayList<String> descText = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-                setTextFields(SPEECH_DESCRIPTION_REQUEST_CODE, descText.get(0));
-            } else if (resultCode == RESULT_CANCELED) {
-                // User cancelled the speech activity
-            } else {
-                // Some other error, advise user
-            }
-            break;
-        }
-    }
-
-    /** Fire an intent to start Speech Recognition Activity */
-    protected void startSpeechRecognition(int requestCode) {
-        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
-                        RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-        try {
-            startActivityForResult(intent, requestCode);
-        } catch (ActivityNotFoundException a) {
-            Toast.makeText(getApplicationContext(),
-                           "Your device does not " + "support Speech Recognition",
-                           Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -222,15 +165,6 @@ public class PPSPdroidIntroActivity extends Activity {
         mVideoTitle.setText("Video Title");
         mVideoTags.setText("Add Tags");
         mVideoDescription.setText("Add Description");
-    }
-
-    /** Displays the tags and description */
-    private void setTextFields(int requestCode, String text) {
-        if (requestCode == SPEECH_TAG_REQUEST_CODE) {
-            mVideoTags.setText(text);
-        } else if (requestCode == SPEECH_DESCRIPTION_REQUEST_CODE) {
-            mVideoDescription.setText(text);
-        }
     }
 
     /** Displays the filepath and video title */
@@ -254,8 +188,6 @@ public class PPSPdroidIntroActivity extends Activity {
         mVideoTags.setVisibility(visibility);
         mVideoDescription.setVisibility(visibility);
         mShareBtn.setVisibility(visibility);
-        mSpeechTagBtn.setVisibility(visibility);
-        mSpeechDescBtn.setVisibility(visibility);
     }
 
 }

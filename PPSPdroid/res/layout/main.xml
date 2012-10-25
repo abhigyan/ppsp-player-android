@@ -76,16 +76,7 @@
     android:inputType="textAutoComplete"
     android:id="@+id/videoTags" 
     ></EditText>
-  
-  <Button 
-    android:layout_height="wrap_content" 
-    android:id="@+id/speechTagButton" 
-    android:text="Speak the tags" 
-    android:layout_width="fill_parent"
-    android:onClick="speechTag"
-    android:visibility="invisible"
-    ></Button>
-    
+
   <EditText 
     android:layout_width="match_parent" 
     android:layout_height="wrap_content" 
@@ -95,16 +86,7 @@
     android:id="@+id/videoDescription">
     <requestFocus></requestFocus>
     </EditText>
-  
-  <Button 
-    android:layout_height="wrap_content" 
-    android:id="@+id/speechDescButton" 
-    android:text="Speak the description" 
-    android:layout_width="fill_parent"
-    android:onClick="speechDescription"
-    android:visibility="invisible"
-    ></Button>
-  
+   
   <Button 
     android:layout_height="wrap_content" 
     android:id="@+id/shareButton" 
