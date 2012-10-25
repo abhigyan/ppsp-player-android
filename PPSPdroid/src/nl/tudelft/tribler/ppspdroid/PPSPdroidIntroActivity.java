@@ -24,8 +24,6 @@ public class PPSPdroidIntroActivity extends Activity {
     private static final boolean DEBUG_MODE = true;
     private static final String Log_Tag = "PPSP";
     private static final int SELECT_VIDEO_FILE_REQUEST_CODE = 200;
-    private static final int SPEECH_DESCRIPTION_REQUEST_CODE = 300;
-    private static final int SPEECH_TAG_REQUEST_CODE = 400;
 
     private Button mShareBtn;
 
